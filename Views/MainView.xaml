@@ -1,0 +1,211 @@
+﻿<MahApps:MetroWindow x:Class="LeapMotionAngel.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:MahApps="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                     Title="MainWindow"
+                      Height="500" Width="800"
+                     BorderThickness="0"
+                     ShowTitleBar="False"
+                     
+                     DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+
+
+
+
+    <MahApps:MetroWindow.WindowButtonCommands >
+        <MahApps:WindowButtonCommands Style="{DynamicResource MahApps.Metro.Styles.WindowButtonCommands.Win10}" />
+    </MahApps:MetroWindow.WindowButtonCommands>
+
+    <MahApps:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Grid  
+                Height="20" 
+                Width="20">
+                <Rectangle >
+                    <Rectangle.Fill>
+                        <VisualBrush Visual="{StaticResource       appbar_3d_obj}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+        </DataTemplate>
+    </MahApps:MetroWindow.IconTemplate>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+
+        <!--status区-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Label  
+                VerticalContentAlignment="Center"
+                 Padding="10,0,0,0"
+                 Margin="0" 
+            
+                Content="{Binding  MainModel.Status,Mode=TwoWay}"
+                 Style="{DynamicResource LableStatus}" Grid.ColumnSpan="2" Foreground="White" >
+                <Label.Resources>
+                    <Style x:Key="LableStatus">
+                        <Style.Triggers>
+                            <Trigger  Property="Label.Content" Value="Disconnect">
+                                <Setter Property="Label.Background" Value="Red"/>
+                            </Trigger>
+                            <Trigger  Property="Label.Content" Value="Connect">
+                                <Setter Property="Label.Background" Value="Gray"/>
+                            </Trigger>
+                            <Trigger  Property="Label.Content" Value="Please Insert LeapMotion">
+                                <Setter Property="Label.Background" Value="#FFCA5100"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Resources>
+            </Label>
+
+        </Grid>
+
+
+
+
+
+
+        <!--参数选择区-->
+        <Grid Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label  Content="选择手" Grid.Row="1" />
+            <ComboBox x:Name="comboBox" Grid.Column="1" Grid.Row="1">
+                <ComboBoxItem Content="手1"/>
+                <ComboBoxItem Content="手2"/>
+            </ComboBox>
+        </Grid>
+
+        <!--内容显示区-->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+              
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+
+            </Grid.RowDefinitions>
+            <!--食指-->
+            <Label  Content="食指" 
+                    Grid.Row="2"/>
+            <Label  
+            Content="{Binding  MainModel.FingerBoneFirAngel,Mode=TwoWay}"
+                    Grid.Row="2"
+                    Grid.Column="1"/>
+            <Label  
+            Content="{Binding  MainModel.FingerBoneSencondAngel,Mode=TwoWay}"
+                    Grid.Row="2"
+                     Grid.Column="2"/>
+            <Label 
+                     Content="{Binding  MainModel.FingerBoneThirdAngel,Mode=TwoWay}"
+                    Grid.Row="2"
+                     Grid.Column="3"/>
+
+
+            <!--大拇指-->
+            <Label  Content="大拇指" 
+                    Grid.Row="1"/>
+            <Label  
+            Content="{Binding  MainModel.FirFingerBoneFirAngel,Mode=TwoWay}"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+            <Label  
+            Content="{Binding  MainModel.FirFingerBoneSencondAngel,Mode=TwoWay}"
+                    Grid.Row="1"
+                     Grid.Column="2"/>
+            <Label 
+                     Content="{Binding  MainModel.FirFingerBoneThirdAngel,Mode=TwoWay}"
+                    Grid.Row="1"
+                     Grid.Column="3"/>
+
+
+            <!--中指-->
+            <Label  Content="中指" 
+                    Grid.Row="3"/>
+            <Label  
+            Content="{Binding  MainModel.SecondFingerBoneFirAngel,Mode=TwoWay}"
+                    Grid.Row="3"
+                    Grid.Column="1"/>
+            <Label  
+            Content="{Binding  MainModel.SecondFingerBoneSencondAngel,Mode=TwoWay}"
+                    Grid.Row="3"
+                     Grid.Column="2"/>
+            <Label 
+                     Content="{Binding  MainModel.SencondFingerBoneThirdAngel,Mode=TwoWay}"
+                    Grid.Row="3"
+                     Grid.Column="3"/>
+
+
+            <!--无名指-->
+            <Label  Content="无名指" 
+                    Grid.Row="4"/>
+            <Label  
+            Content="{Binding  MainModel.ThirdFirFingerBoneFirAngel,Mode=TwoWay}"
+                    Grid.Row="4"
+                    Grid.Column="1"/>
+            <Label  
+            Content="{Binding  MainModel.ThirdFingerBoneSencondAngel,Mode=TwoWay}"
+                    Grid.Row="4"
+                     Grid.Column="2"/>
+            <Label 
+                     Content="{Binding  MainModel.ThirdFingerBoneThirdAngel,Mode=TwoWay}"
+                    Grid.Row="4"
+                     Grid.Column="3"/>
+
+
+            <!--小拇指-->
+            <Label  Content="小拇指" 
+                    Grid.Row="5"/>
+            <Label  
+            Content="{Binding  MainModel.LastFingerBoneFirAngel,Mode=TwoWay}"
+                    Grid.Row="5"
+                    Grid.Column="1"/>
+            <Label  
+            Content="{Binding  MainModel.LastFingerBoneSencondAngel,Mode=TwoWay}"
+                    Grid.Row="5"
+                     Grid.Column="2"/>
+            <Label 
+                     Content="{Binding  MainModel.LastFingerBoneThirdAngel,Mode=TwoWay}"
+                    Grid.Row="5"
+                     Grid.Column="3"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+    </Grid>
+</MahApps:MetroWindow>
